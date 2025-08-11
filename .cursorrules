@@ -1,0 +1,64 @@
+# FixFlow VS Code Extension - Development Guidelines
+
+## Project Overview
+FixFlow is a Visual Studio Code extension designed to help developers track, manage, and resolve technical debt directly within their coding environment.
+
+## Code Standards
+
+### TypeScript
+- Use strict TypeScript configuration
+- Prefer interfaces over types for object shapes
+- Use enums for constants and status values
+- Always define return types for functions
+- Use proper error handling with try-catch blocks
+
+### VS Code Extension Development
+- Follow VS Code extension API best practices
+- Use proper activation events and commands
+- Implement proper disposal patterns for resources
+- Use workspace configuration for user preferences
+- Follow VS Code UI/UX guidelines
+
+### File Organization
+- Keep related functionality in the same module
+- Use descriptive file and folder names
+- Separate concerns: UI, business logic, data storage
+- Group commands by functionality
+
+### Error Handling
+- Always handle potential errors gracefully
+- Provide meaningful error messages to users
+- Log errors for debugging purposes
+- Use VS Code's built-in error reporting
+
+### Testing
+- Write unit tests for core functionality
+- Test VS Code extension commands
+- Mock VS Code API calls in tests
+- Ensure proper test coverage
+
+### Documentation
+- Document all public APIs and interfaces
+- Include JSDoc comments for complex functions
+- Keep README and CHANGELOG updated
+- Document configuration options
+
+## Naming Conventions
+- Use camelCase for variables and functions
+- Use PascalCase for classes and interfaces
+- Use UPPER_SNAKE_CASE for constants
+- Use kebab-case for file names
+
+## Performance Considerations
+- Minimize VS Code API calls
+- Use efficient data structures
+- Implement proper caching strategies
+- Avoid blocking the main thread
+-Do not create any type, constant, or class if it already exists in the system.
+-Always check for existing definitions before adding new ones to avoid duplication and conflicts.
+
+## Security
+- Validate all user inputs
+- Sanitize file paths and content
+- Use secure storage for sensitive data
+- Follow VS Code security best practices
