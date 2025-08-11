@@ -1,6 +1,4 @@
-/**
- * Constants used throughout the FixFlow extension
- */
+
 
 export const EXTENSION_ID = 'fixflow';
 export const EXTENSION_NAME = 'FixFlow';
@@ -12,6 +10,8 @@ export const COMMANDS = {
   OPEN_DEBT_BOARD: 'fixflow.openDebtBoard',
   SCAN_FOR_DEBT: 'fixflow.scanForDebt',
   EXPORT_REPORT: 'fixflow.exportReport',
+  RESOLVE_DEBT_ENTRY: 'fixflow.resolveDebtEntry',
+  DELETE_DEBT_ENTRY: 'fixflow.deleteDebtEntry',
 } as const;
 
 // View IDs

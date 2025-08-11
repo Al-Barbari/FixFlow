@@ -24,12 +24,7 @@
     "Programming Languages",
     "Snippets"
   ],
-  "activationEvents": [
-    "onCommand:fixflow.createDebtEntry",
-    "onCommand:fixflow.openDebtBoard",
-    "onCommand:fixflow.scanForDebt",
-    "onCommand:fixflow.exportReport"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
@@ -52,6 +47,16 @@
         "command": "fixflow.exportReport",
         "title": "FixFlow: Export Debt Report",
         "category": "FixFlow"
+      },
+      {
+        "command": "fixflow.resolveDebtEntry",
+        "title": "FixFlow: Resolve Debt",
+        "category": "FixFlow"
+      },
+      {
+        "command": "fixflow.deleteDebtEntry",
+        "title": "FixFlow: Delete Debt",
+        "category": "FixFlow"
       }
     ],
     "menus": {
@@ -59,16 +64,22 @@
         {
           "command": "fixflow.createDebtEntry",
           "group": "fixflow",
-          "when": "editorHasSelection"
+          "when": "editorTextFocus"
         }
       ],
       "commandPalette": [
         {
-          "command": "fixflow.createDebtEntry",
-          "when": "editorHasSelection"
+          "command": "fixflow.createDebtEntry"
         }
       ]
     },
+    "keybindings": [
+      {
+        "command": "fixflow.createDebtEntry",
+        "key": "ctrl+alt+d",
+        "when": "editorTextFocus && !inputFocus"
+      }
+    ],
     "configuration": {
       "title": "FixFlow",
       "properties": {

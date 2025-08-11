@@ -1,9 +1,5 @@
-/**
- * Providers for FixFlow extension
- * This file exports all provider modules
- */
+export { DebtFormProvider } from './debt-form-provider';
+export { DebtTreeProvider } from './debt-tree-provider';
+export { DebtDecorationProvider } from './debt-decoration-provider';
 
-// TODO: Export provider modules as they are implemented
-// export { DebtTreeDataProvider } from './debt-tree-data-provider';
-// export { DebtWebviewProvider } from './debt-webview-provider';
-// export { StatusBarProvider } from './status-bar-provider';
+
