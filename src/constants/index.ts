@@ -12,6 +12,7 @@ export const COMMANDS = {
   EXPORT_REPORT: 'fixflow.exportReport',
   RESOLVE_DEBT_ENTRY: 'fixflow.resolveDebtEntry',
   DELETE_DEBT_ENTRY: 'fixflow.deleteDebtEntry',
+  CONVERT_TODO_TO_DEBT: 'fixflow.convertTodoToDebt',
 } as const;
 
 // View IDs
@@ -36,6 +37,7 @@ export const DEFAULTS = {
   EXCLUDE_PATTERNS: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.git/**'],
   MAX_CONTEXT_LINES: 5,
   DEBT_ID_PREFIX: 'debt',
+  CODE_ACTION_LANGUAGES: ['javascript','typescript','javascriptreact','typescriptreact','python','java','csharp','cpp','go','rust']
 } as const;
 
 // File extensions

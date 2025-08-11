@@ -57,6 +57,19 @@
         "command": "fixflow.deleteDebtEntry",
         "title": "FixFlow: Delete Debt",
         "category": "FixFlow"
+      },
+      {
+        "command": "fixflow.convertTodoToDebt",
+        "title": "FixFlow: Convert TODO/FIXME to Debt",
+        "category": "FixFlow"
+      }
+    ],
+    "codeActions": [
+      {
+        "languages": ["javascript", "typescript", "javascriptreact", "typescriptreact", "python", "java", "csharp", "cpp", "go", "rust"],
+        "title": "FixFlow: Convert TODO/FIXME to Debt",
+        "kind": "quickfix",
+        "description": "Convert TODO/FIXME comment to a FixFlow debt entry"
       }
     ],
     "menus": {
@@ -64,6 +77,13 @@
         {
           "command": "fixflow.createDebtEntry",
           "group": "fixflow",
+          "when": "editorTextFocus"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "fixflow.convertTodoToDebt",
+          "group": "navigation@9",
           "when": "editorTextFocus"
         }
       ],
@@ -77,6 +97,11 @@
       {
         "command": "fixflow.createDebtEntry",
         "key": "ctrl+alt+d",
+        "when": "editorTextFocus && !inputFocus"
+      },
+      {
+        "command": "fixflow.convertTodoToDebt",
+        "key": "ctrl+alt+t",
         "when": "editorTextFocus && !inputFocus"
       }
     ],

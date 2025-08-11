@@ -8,8 +8,8 @@ import * as path from 'path';
 import { COMMANDS, DEFAULTS, MESSAGES } from './constants';
 import { showInfoMessage } from './utils';
 import { DebtService, GitHubService, ScannerService } from './services';
-import { DebtTreeProvider, DebtDecorationProvider } from './providers';
-import { registerAddDebtCommand } from './commands';
+import { DebtTreeProvider, DebtDecorationProvider, TodoConversionCodeActionProvider, TodoConversionHoverProvider } from './providers';
+import { registerAddDebtCommand, registerConvertTodoCommand } from './commands';
 
 /**
  * Activate the FixFlow extension
@@ -27,6 +27,7 @@ export function activate(context: vscode.ExtensionContext): void {
   // Register commands
   const commands = [
     registerAddDebtCommand(context),
+    registerConvertTodoCommand(context),
     vscode.commands.registerCommand(COMMANDS.OPEN_DEBT_BOARD, openDebtBoard),
     vscode.commands.registerCommand(COMMANDS.SCAN_FOR_DEBT, scanForDebt),
     vscode.commands.registerCommand(COMMANDS.EXPORT_REPORT, exportReport),
@@ -76,6 +77,16 @@ function initializeExtension(context: vscode.ExtensionContext): void {
   decorationProvider = new DebtDecorationProvider(context);
   decorationProvider.initialize().catch(() => {/* ignore */});
   context.subscriptions.push(decorationProvider);
+
+  // Register code actions and hover
+  context.subscriptions.push(
+    vscode.languages.registerCodeActionsProvider(
+      { language: '*', scheme: 'file' },
+      new TodoConversionCodeActionProvider(),
+      { providedCodeActionKinds: TodoConversionCodeActionProvider.providedCodeActionKinds }
+    ),
+    vscode.languages.registerHoverProvider({ language: '*', scheme: 'file' }, new TodoConversionHoverProvider())
+  );
 }
 
 /**

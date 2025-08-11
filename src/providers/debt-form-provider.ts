@@ -123,7 +123,8 @@ export class DebtFormProvider {
   public async openWebview(
     debtService: DebtService,
     context: vscode.ExtensionContext,
-    defaults?: Partial<Pick<TechnicalDebt, 'filePath' | 'lineNumber' | 'context'>>
+    defaults?: Partial<Pick<TechnicalDebt, 'filePath' | 'lineNumber' | 'context'>>,
+    onCreated?: (created: TechnicalDebt) => void | Promise<void>
   ): Promise<void> {
     if (this.webviewPanel) {
       this.webviewPanel.reveal(vscode.ViewColumn.One);
@@ -165,8 +166,11 @@ export class DebtFormProvider {
             return;
           }
 
-          await debtService.createDebt(partial as Omit<TechnicalDebt, 'id' | 'createdAt' | 'updatedAt'>);
+          const created = await debtService.createDebt(partial as Omit<TechnicalDebt, 'id' | 'createdAt' | 'updatedAt'>);
           vscode.window.showInformationMessage(MESSAGES.DEBT_CREATED);
+          if (onCreated) {
+            try { await onCreated(created); } catch { /* ignore */ }
+          }
           panel.dispose();
         } catch (error) {
           const messageText = error instanceof Error ? error.message : String(error);
